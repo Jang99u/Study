@@ -9,7 +9,7 @@ for i in N :
     heapq.heappush(HQ, i)
 
 if M == 1 :
-    print(HQ[0])
+    print(0)
     exit(0)
 
 result = 0
