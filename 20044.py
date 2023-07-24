@@ -1,6 +1,5 @@
 Team = int(input(""))
-N = list(map(int, input("").split()))
-N.sort()
+N = list(map(int, input("").split())).sort()
 
 result = []
 for i in range(Team) :
