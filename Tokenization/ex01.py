@@ -1,10 +1,10 @@
 # Tokenization
 
-from konlpy.tag import Okt
+from konlpy.tag import Kkma
 
 def tokenize_korean_sentence(sentence):
-    okt = Okt()
-    tokens = okt.morphs(sentence)  # 문장을 형태소로 분리하여 토큰화
+    kkma = Kkma()
+    tokens = kkma.morphs(sentence)  # 문장을 형태소로 분리하여 토큰화
     return tokens
 
 if __name__ == "__main__":
