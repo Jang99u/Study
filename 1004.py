@@ -20,4 +20,5 @@ for _ in range(TC) :
     
 for i in result :
     print(i)
-    
+
+# Å×½ºÆ®
