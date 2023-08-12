@@ -1,21 +1,13 @@
 def BinarySearch(num) :
     global lst
     start = 0
-    end = len(lst) - 1
+    end = len(lst)
     
-    while 1 :
+    while start < end :
         mid = (start + end) // 2
-        if num > lst[-1] :
-            lst.append(num)
-            return
-        if start == end :
-            end = mid
-            break
-        elif num == lst[mid] :
-            return
-        elif num > lst[mid] :
+        if num > lst[mid] :
             start = mid + 1
-        elif num < lst[mid] :
+        else :
             end = mid
             
     lst[end] = num
@@ -28,6 +20,11 @@ for i in range(SIZE) :
     if i == 0 :
         lst.append(N[i])
         continue
-    BinarySearch(N[i])
+    
+    if N[i] > lst[-1] :
+        lst.append(N[i])
+        continue
+    else :
+        BinarySearch(N[i])
     
 print(len(lst))
