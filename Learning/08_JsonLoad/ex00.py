@@ -1,5 +1,4 @@
 # 폴더 내의 json 파일 로드
-
 import os
 import json
 

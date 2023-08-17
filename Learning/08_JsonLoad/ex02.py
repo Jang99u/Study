@@ -1,4 +1,4 @@
-# 폴더 내의 json 파일 로드 및 택스트 파일로 저장
+# 필요한 부분만 추출해 저장하기
 import os
 import json
 
@@ -10,8 +10,11 @@ for file_name in file_list[:10] : # 각 파일을 하나씩 열어서 내용을 
     file_path = PATH + "/" + file_name
     with open(file_path, "r", encoding="utf-8") as file: # json 파일 로드
         data = json.load(file)
-        data = data["named_entity"]
+        if data["header"]["subject"] != "SC" : # 필요한 주제만 가져오기 
+            continue
         
+        # 문장 추출
+        data = data["named_entity"]
         content_list = []
         for i in data :
             for j in i["content"] :
