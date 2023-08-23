@@ -11,7 +11,7 @@ def factorial(n) :
     return num
         
 def nCr(n, r) :
-    return int((factorial(n) / factorial(n-r)) / factorial(r))
+    return int((factorial(n) // factorial(n-r)) // factorial(r))
 
 TC = int(input())
 result = []
