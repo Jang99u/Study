@@ -19,15 +19,15 @@ for _ in range(TC) :
     x1, y1, x2, y2 = map(lambda x : x-1, [x1, y1, x2, y2])
     
     if x1 > 0 and y1 > 0 :
-        cnt = arr[y2][x2] - (arr[y1-1][x2] + arr[y2][x1-1] - arr[y1-1][x1-1])
+        cnt = arr[x2][y2] - (arr[x1-1][y2] + arr[x2][y1-1] - arr[x1-1][y1-1])
         result.append(str(cnt))
     elif x1 <= 0 and y1 <= 0 :
-        cnt = arr[y2][x2]
-        result.append(str(cnt))
-    elif y1 <= 0 :
-        cnt = arr[y2][x2] - arr[y2][x1-1]
+        cnt = arr[x2][y2]
         result.append(str(cnt))
     elif x1 <= 0 :
-        cnt = arr[y2][x2] - arr[y1-1][x2]
+        cnt = arr[x2][y2] - arr[x2][y1-1]
+        result.append(str(cnt))
+    elif y1 <= 0 :
+        cnt = arr[x2][y2] - arr[x1-1][y2]
         result.append(str(cnt))
 print("\n".join(result))
