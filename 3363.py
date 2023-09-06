@@ -1,22 +1,11 @@
-def canbigger(i) :
-    global num, bigger, lower
-    
-    if i in bigger and i not in lower and len(bigger) == 1 :
-        return True
-    else :
-        return False
-
-def canlower(i) :
-    global num, bigger, lower
-    
-    if i in lower and i not in bigger and len(lower) == 1 :
-        return True
-    else :
-        return False
+def find(lst, num) :
+    for i in num :
+        if i in lst :
+            lst.remove(i)
     
 num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-bigger = []
-lower = []
+bigger = num.copy()
+lower = num.copy()
 
 TC = []
 for _ in range(3) :
@@ -26,27 +15,34 @@ for _ in range(3) :
     TC.append(temp)
 
 for lst in TC :
-    if lst[4] == '>' :
-        bigger.append(set(map(int, lst[:4])))
-        lower.append(set(map(int, lst[5:])))
-    elif lst[4] == '<' :
-        bigger.append(set(map(int, lst[5:])))
-        lower.append(set(map(int, lst[:4])))
+    left = list(map(int, lst[:4]))
+    right = list(map(int, lst[5:]))
+    lst_ = left.copy()
+    lst_.extend(right)
+    diff = list(set(num) - set(left) - set(right))
+    
+    if lst[4] == '<' :
+        find(bigger, left)
+        find(bigger, diff)
+        find(lower, right)
+        find(lower, diff)
+    elif lst[4] == '>' :
+        find(bigger, right)
+        find(bigger, diff)
+        find(lower, left)
+        find(lower, diff)
     elif lst[4] == '=' :
-        bigger.append(set(num))
-        lower.append(set(num))
+        find(bigger, left)
+        find(bigger, right)
+        find(lower, left)
+        find(lower, right)
 
-bigger = bigger[0] & bigger[1] & bigger[2]
-lower = lower[0] & lower[1] & lower[2]
 if len(bigger) + len(lower) > 1 :
     print("indefinite")
-    exit(0)
-
-for i in num :
-    if canbigger(i) :
-        print(str(i)+"+")
-        exit()
-    if canlower(i) :
-        print(str(i)+"-")
-        exit()
-print("impossible")
+elif len(bigger) + len(lower) == 0 :
+    print("impossible")
+else :
+    if len(bigger) == 1 :
+        print(str(bigger[0])+"+")
+    elif len(lower) == 1 :
+        print(str(lower[0])+"-")
