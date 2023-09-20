@@ -1,10 +1,7 @@
-n = int(input())  
-arr = list(map(int,input().split())) 
-arr.sort()
+N = int(input())
+lst = sorted(list(map(int, input().split())))
 
 result = 0
-
-for i in range(1,n):
-    arr[i] += arr[i-1] 
-
-print(sum(arr))
+for i in range(len(lst)) :
+    result += sum(lst[:(i+1)])
+print(result)
