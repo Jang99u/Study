@@ -1,48 +1,36 @@
-N, M, C = map(int, input().split())
-C -= 1
-INF = 1000000000
-dis = [[INF for _ in range(N)] for _ in range(N)]
+import heapq as hq
+import sys
+input = sys.stdin.readline
 
-for i in range(N) :
-    dis[i][i] = 0
+N, M, X = map(int, input().split())
+INF = 100000000
     
+def dijkstra(X, city) :
+    heap = [[0, X-1]]
+    T = [INF for _ in range(N)]
+    T[X-1] = 0
+    while heap :
+        cost, node = hq.heappop(heap)
+        if T[node] < cost :
+            continue
+        
+        for i in range(N) :
+            if T[node] + city[node][i] < T[i] :
+                T[i] = T[node] + city[node][i]
+                hq.heappush(heap, [T[i], i])
+                
+    return T
+
+city = [[INF for _ in range(N)] for _ in range(N)]
 for _ in range(M) :
-    start, end, time = map(int, input().split())
-    dis[start-1][end-1] = time
-    
-K = C
-T = [INF for _ in range(N)]
-visited = [False for _ in range(N)]
-T[K] = 0
-while False in visited :
-    cnt = INF
-    visited[K] = True
-    for j in range(N) :
-        time = T[K] + dis[K][j]
-        T[j] = min(T[j], time)
-        if dis[K][j] < cnt and visited[j] == False :
-            cnt = dis[K][j]
-            K_ = j
-    K = K_
-    
+    start, end, cost = map(int, input().split())
+    city[start-1][end-1] = cost
+from_ = dijkstra(X, city)
+
 for i in range(N) :
     for j in range(i, N) :
-        dis[i][j], dis[j][i] = dis[j][i], dis[i][j]
-        
-K = C
-T_ = [INF for _ in range(N)]
-visited = [False for _ in range(N)]
-T_[K] = 0
-while False in visited :
-    cnt = INF
-    visited[K] = True
-    for j in range(N) :
-        time = T_[K] + dis[K][j]
-        T_[j] = min(T_[j], time)
-        if dis[K][j] < cnt and visited[j] == False :
-            cnt = dis[K][j]
-            K_ = j
-    K = K_
+        city[i][j], city[j][i] = city[j][i], city[i][j]
+to_ = dijkstra(X, city)
 
-result = [T[i] + T_[i] for i in range(N)]
+result = [from_[i] + to_[i] for i in range(N)]
 print(max(result))
