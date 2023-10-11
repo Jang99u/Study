@@ -34,3 +34,34 @@ to_ = dijkstra(X, city)
 
 result = [from_[i] + to_[i] for i in range(N)]
 print(max(result))
+
+'''
+# Floyd-Warshall
+# Timeout
+
+N, M, K = map(int, input().split())
+INF = 1000000000
+FW = [[INF for _ in range(N)] for _ in range(N)]
+
+for _ in range(M) :
+    start, end, time = map(int, input().split())
+    FW[start-1][end-1] = time
+
+for i in range(N) :
+    for j in range(N) :
+        if FW[j][i] == INF :
+            continue
+        if i == j :
+            continue
+        for k in range(N) :
+            if j == k :
+                continue
+            FW[j][k] = min(FW[j][k], FW[j][i] + FW[i][k])
+
+result = []
+for i in range(N) :
+    if i == K-1 :
+        continue
+    result.append(FW[i][K-1] + FW[K-1][i])
+print(max(result))
+'''
