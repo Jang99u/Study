@@ -21,5 +21,7 @@ public class TriangleTester {
         myTriangle.printXY();
         myTriangle.printLengthAngle();
         myTriangle.printPerimeterArea();
+
+        keyIn.close();
     }
 }
