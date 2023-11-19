@@ -23,6 +23,7 @@ public class PrimePrinter {
             System.out.print(nextNum + " ");
             num = nextNum + 1;
         }
+        
         keyIn.close();
     }
 }
