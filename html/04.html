@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document4</title>
+    <link rel="stylesheet" href="css/02.css" />
+  </head>
+  <body>
+    <div class="alert-box" id="box1">
+      <p>
+        알림창1임
+        <button onclick="document.getElementById('box1').style.display='none';">
+          닫기버튼임
+        </button>
+      </p>
+    </div>
+
+    <div class="alert-box" id="box2">
+      <p>
+        알림창2임
+        <button onclick="document.getElementById('box2').style.display='none';">
+          닫기버튼임
+        </button>
+      </p>
+    </div>
+
+    <button onclick="알림창열기()">버튼1</button>
+
+    <button onclick="document.getElementById('box2').style.display = 'block';">
+      버튼2
+    </button>
+
+    <script>
+      function 알림창열기() {
+        document.getElementById("box1").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
