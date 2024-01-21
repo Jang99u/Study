@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>EventListener Example</title>
+    <link rel="stylesheet" href="css/04.css" />
+  </head>
+  <body>
+    <div class="alert-box" id="box1">
+      <p id="text"></p>
+      <button id="close">닫기버튼임</button>
+    </div>
+
+    <button onclick="알림창관리('box1', 'block', '아이디')">버튼1</button>
+
+    <button onclick="알림창관리('box1', 'block', '패스워드')">버튼2</button>
+
+    <script>
+      document.getElementById("close").addEventListener("click", function () {
+        document.getElementById("box1").style.display = "none";
+      });
+
+      function 알림창관리(박스, 상태, 출력값) {
+        document.getElementById("text").innerHTML = 출력값;
+        document.getElementById(박스).style.display = 상태;
+      }
+    </script>
+  </body>
+</html>

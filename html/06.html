@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Change Specific Element Example</title>
+  </head>
+  <body>
+    <div id="richContentDiv">
+      <h1>많은 내용이 있는 div</h1>
+      <p id="targetParagraph">
+        이 div 안에는 다양한 HTML 요소와 텍스트가 포함되어 있습니다.
+      </p>
+      <ul>
+        <li>리스트 아이템 1</li>
+        <li>리스트 아이템 2</li>
+        <li>리스트 아이템 3</li>
+      </ul>
+    </div>
+
+    <script>
+      // JavaScript에서 특정 요소를 찾아 내용 변경
+      var targetParagraph = document.getElementById("targetParagraph");
+      targetParagraph.innerHTML =
+        "이제 이 문장은 JavaScript에 의해 변경되었습니다.";
+    </script>
+  </body>
+</html>
